@@ -210,76 +210,88 @@ export default function Home() {
       </section>
 
       {/* ── r00tgeist ── */}
-      <section className="bg-ink/85 backdrop-blur-2xl text-paper px-6 py-20 md:px-12 md:py-44 relative overflow-hidden border-y border-white/10">
+      <section className="bg-parchment/60 backdrop-blur-xl text-ink px-6 py-20 md:px-12 md:py-44 relative overflow-hidden border-y border-ink/10">
         <motion.div 
           initial={{ opacity: 0 }} 
-          whileInView={{ opacity: 0.05 }} 
-          className="absolute inset-0 font-mono text-[20vw] leading-none whitespace-nowrap pointer-events-none select-none"
+          whileInView={{ opacity: 0.04 }} 
+          className="absolute inset-0 font-mono text-[20vw] leading-none whitespace-nowrap pointer-events-none select-none text-ink"
         >
           BREAK TO UNDERSTAND BREAK TO UNDERSTAND
         </motion.div>
         
-        <SectionLabel className="invert">01 — The cybersecurity crew</SectionLabel>
+        <SectionLabel>01 — The cybersecurity crew</SectionLabel>
         
         <div className="mt-20 grid gap-16 md:grid-cols-12 items-center">
           <div className="md:col-span-5 relative z-10">
             <FadeIn>
-              <h2 className="serif text-[clamp(2.4rem,6vw,5.5rem)] leading-[1] tracking-tight">
+              <h2 className="serif text-[clamp(2.4rem,6vw,5.5rem)] leading-[1] tracking-tight text-ink">
                 Learn by <span className="text-ember italic">breaking.</span>
               </h2>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <p className="mt-8 text-[18px] leading-relaxed text-paper/70">
+              <p className="mt-8 text-[18px] leading-relaxed text-ink/80">
                 A student cybersecurity crew built on CTFs, event culture and breaking things to understand them.
               </p>
             </FadeIn>
             <FadeIn delay={0.3}>
               <div className="mt-12">
-                <ULink
-                  href="https://r00tgeist.techfoundry.in"
-                  external
-                  className="bg-ember text-white px-10 py-5 text-[15px] hover:scale-105 transition-transform inline-block shadow-lg"
+                <motion.div
+                  whileHover={{ scale: 1.05, scaleY: 0.96 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                  className="inline-block"
                 >
-                  Enter the r00tgeist ↗
-                </ULink>
+                  <ULink
+                    href="https://r00tgeist.techfoundry.in"
+                    external
+                    className="bg-ember text-white px-10 py-5 text-[15px] font-semibold inline-block shadow-md rounded"
+                  >
+                    Enter the r00tgeist ↗
+                  </ULink>
+                </motion.div>
               </div>
             </FadeIn>
           </div>
           <div className="md:col-span-7 relative">
             <PerspectiveCard>
-              <div className="relative p-6 md:p-8 bg-black/40 border border-white/10 rounded-xl backdrop-blur-xl shadow-2xl overflow-hidden group hover:border-ember/40 transition-colors">
+              <motion.div
+                whileHover={{ scale: 1.02, scaleY: 0.985 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 380, damping: 16 }}
+                className="relative p-6 md:p-8 bg-paper/95 border border-ink/15 rounded-2xl backdrop-blur-xl shadow-lg overflow-hidden group hover:border-ember/50 transition-colors"
+              >
                 {/* Ambient glow behind console */}
-                <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-ember/15 blur-3xl pointer-events-none group-hover:bg-ember/25 transition-all" />
+                <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-ember/10 blur-3xl pointer-events-none group-hover:bg-ember/20 transition-all" />
                 
                 {/* Tech bar */}
-                <div className="flex items-center justify-between font-mono text-[11px] text-paper/50 mb-6 border-b border-paper/10 pb-3">
+                <div className="flex items-center justify-between font-mono text-[11px] text-ash mb-6 border-b border-ink/10 pb-3">
                   <div className="flex items-center gap-2">
                     <span className="h-2 w-2 rounded-full bg-ember animate-pulse" />
-                    <span>SIGNAL // ACTIVE</span>
+                    <span className="font-semibold text-ink">SIGNAL // ACTIVE</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Terminal className="h-3.5 w-3.5 text-ember" />
-                    <span className="tracking-widest uppercase text-ember/90 font-semibold">OFFENSIVE_CREW</span>
+                    <span className="tracking-widest uppercase text-ember font-bold">OFFENSIVE_CREW</span>
                   </div>
                 </div>
 
-                {/* Pure Cybernetic HUD with Lucide React Icons */}
-                <div className="relative py-8 md:py-12 px-6 md:px-10 bg-black/50 backdrop-blur-md rounded-lg border border-paper/10 overflow-hidden">
-                  <div className="scanlines absolute inset-0 opacity-15 pointer-events-none" />
+                {/* Pure Cybernetic HUD with Lucide React Icons in light palette */}
+                <div className="relative py-8 md:py-12 px-6 md:px-10 bg-parchment/70 backdrop-blur-md rounded-xl border border-ink/10 overflow-hidden">
+                  <div className="scanlines absolute inset-0 opacity-5 pointer-events-none" />
                   
                   <div className="flex items-center justify-between mb-8">
                     <div className="flex items-center gap-3">
-                      <div className="h-10 w-10 rounded-lg bg-ember/15 border border-ember/30 flex items-center justify-center text-ember">
-                        <ShieldAlert className="h-6 w-6" strokeWidth={1.75} />
+                      <div className="h-10 w-10 rounded-lg bg-sand/40 border border-ink/10 flex items-center justify-center text-ember">
+                        <ShieldAlert className="h-6 w-6" strokeWidth={2} />
                       </div>
                       <div>
-                        <h3 className="font-mono text-2xl md:text-3xl font-bold tracking-tight text-paper">
+                        <h3 className="font-mono text-2xl md:text-3xl font-bold tracking-tight text-ink">
                           r00t<span className="text-ember">geist</span>
                         </h3>
-                        <span className="font-mono text-[11px] text-paper/40">Division :: Offensive Security</span>
+                        <span className="font-mono text-[11px] text-ash font-medium">Division :: Offensive Security</span>
                       </div>
                     </div>
-                    <span className="font-mono text-[10px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded">
+                    <span className="font-mono text-[10px] text-emerald-700 bg-emerald-500/15 border border-emerald-600/30 px-2.5 py-1 rounded font-bold">
                       ● CTF UNIT LIVE
                     </span>
                   </div>
@@ -291,29 +303,29 @@ export default function Home() {
                       { icon: Radio, label: "Frequency", val: "433.9 MHz" },
                       { icon: Activity, label: "Handshake", val: "14ms" },
                     ].map(stat => (
-                      <div key={stat.label} className="p-3 rounded bg-white/5 border border-white/5">
-                        <div className="flex items-center gap-1.5 text-ember mb-1.5">
+                      <div key={stat.label} className="p-3 rounded-lg bg-paper border border-ink/10 shadow-xs">
+                        <div className="flex items-center gap-1.5 text-ember mb-1.5 font-bold">
                           <stat.icon className="h-3.5 w-3.5" />
-                          <span className="text-[10px] text-paper/60 uppercase">{stat.label}</span>
+                          <span className="text-[10px] text-ash uppercase font-medium">{stat.label}</span>
                         </div>
-                        <span className="text-paper font-semibold">{stat.val}</span>
+                        <span className="text-ink font-bold">{stat.val}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* Ghost telemetry snippet */}
-                <div className="mt-6 grid grid-cols-2 gap-4 font-mono text-[11px] text-paper/60 border-t border-paper/10 pt-4">
+                <div className="mt-6 grid grid-cols-2 gap-4 font-mono text-[11px] text-ash border-t border-ink/10 pt-4">
                   <div>
-                    <span className="text-ash block text-[10px] uppercase tracking-wider">Mission</span>
-                    <span className="text-paper">Vulnerability Research &amp; WarGames</span>
+                    <span className="block text-[10px] uppercase tracking-wider text-ash/80">Mission</span>
+                    <span className="text-ink font-medium">Vulnerability Research &amp; WarGames</span>
                   </div>
                   <div className="text-right">
-                    <span className="text-ash block text-[10px] uppercase tracking-wider">Protocol</span>
+                    <span className="block text-[10px] uppercase tracking-wider text-ash/80">Protocol</span>
                     <span className="text-ember font-bold">BREAK_TO_UNDERSTAND</span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </PerspectiveCard>
           </div>
         </div>
@@ -428,9 +440,12 @@ export default function Home() {
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {ANESTHESIA_EVENTS.map(ev => (
-                <div
+                <motion.div
                   key={ev.n}
-                  className="p-6 rounded-xl bg-paper/90 border border-ink/15 hover:border-ember transition-all duration-300 flex flex-col justify-between group shadow-sm"
+                  whileHover={{ scale: 1.03, scaleY: 0.98 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 380, damping: 16 }}
+                  className="p-6 rounded-xl bg-paper/90 border border-ink/15 hover:border-ember transition-colors duration-200 flex flex-col justify-between group shadow-sm"
                 >
                   <div>
                     <div className="flex items-center justify-between pb-3 mb-3 border-b border-ink/10">
@@ -450,7 +465,7 @@ export default function Home() {
                     <span>● ARENA CODEX</span>
                     <span>ACTIVE →</span>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>

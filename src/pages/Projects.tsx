@@ -17,11 +17,9 @@ import {
   Rocket, 
   Palette, 
   Users, 
-  Terminal as TerminalIcon, 
   ShieldAlert, 
   Activity, 
   Radio, 
-  Lock,
   Binary,
   Wifi,
   TerminalSquare
@@ -46,91 +44,97 @@ function Terminal() {
   }, [inView]);
 
   return (
-    <div ref={ref} className="border border-paper/10 bg-ink/95 backdrop-blur-xl p-5 md:p-8 rounded-xl shadow-2xl relative overflow-hidden group">
+    <motion.div 
+      ref={ref}
+      whileHover={{ scale: 1.02, scaleY: 0.985 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ type: "spring", stiffness: 350, damping: 15 }}
+      className="border border-ink/15 bg-paper/95 backdrop-blur-xl p-5 md:p-8 rounded-xl shadow-xl relative overflow-hidden group"
+    >
       {/* Subtle ember ambient glow */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-ember/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-72 h-72 bg-ember/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* Terminal Titlebar */}
-      <div className="mb-6 flex items-center justify-between border-b border-white/10 pb-4">
+      <div className="mb-6 flex items-center justify-between border-b border-ink/10 pb-4">
         <div className="flex items-center gap-2">
           <span className="h-3 w-3 rounded-full bg-ember" />
-          <span className="h-3 w-3 rounded-full bg-amber-500/60" />
-          <span className="h-3 w-3 rounded-full bg-emerald-500/40" />
-          <span className="ml-3 font-mono text-[11px] text-paper/40 hidden sm:inline">bash — 80x24</span>
+          <span className="h-3 w-3 rounded-full bg-amber-500/70" />
+          <span className="h-3 w-3 rounded-full bg-emerald-600/50" />
+          <span className="ml-3 font-mono text-[11px] text-ink/50 hidden sm:inline">bash — 80x24</span>
         </div>
         <div className="flex items-center gap-3">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="font-mono text-[11px] text-paper/60 uppercase tracking-widest">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-600 animate-pulse" />
+          <span className="font-mono text-[11px] text-ink/70 uppercase tracking-widest font-semibold">
             SECURE_HANDSHAKE
           </span>
         </div>
       </div>
 
       {/* High-tech cyber header with Lucide icons */}
-      <div className="mb-5 py-4 px-6 bg-black/70 rounded-lg border border-white/10 flex items-center justify-between">
+      <div className="mb-5 py-4 px-6 bg-parchment/80 rounded-lg border border-ink/10 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="p-1.5 rounded bg-ember/15 text-ember">
             <ShieldAlert className="h-5 w-5" strokeWidth={2} />
           </div>
           <div>
-            <span className="font-mono text-base font-bold tracking-wider text-paper block leading-none">
+            <span className="font-mono text-base font-bold tracking-wider text-ink block leading-none">
               r00t<span className="text-ember">geist</span>
             </span>
-            <span className="font-mono text-[10px] text-paper/40 uppercase tracking-widest">CTF Offensive Lab</span>
+            <span className="font-mono text-[10px] text-ash uppercase tracking-widest font-medium">CTF Offensive Lab</span>
           </div>
         </div>
-        <div className="flex items-center gap-2 font-mono text-[10px] text-ember bg-ember/10 border border-ember/30 px-2.5 py-1 rounded">
+        <div className="flex items-center gap-2 font-mono text-[10px] text-ember bg-ember/10 border border-ember/30 px-2.5 py-1 rounded font-semibold">
           <TerminalSquare className="h-3.5 w-3.5" />
           <span>UNIT_ONLINE</span>
         </div>
       </div>
       
       {/* Live Cyber Telemetry Console */}
-      <div className="relative group overflow-hidden rounded-lg border border-paper/10 bg-black/90 p-5 md:p-6 font-mono">
-        <div className="scanlines absolute inset-0 opacity-15 pointer-events-none" />
+      <div className="relative group overflow-hidden rounded-lg border border-ink/10 bg-parchment/60 p-5 md:p-6 font-mono">
+        <div className="scanlines absolute inset-0 opacity-10 pointer-events-none" />
         
         {/* Top telemetry bar */}
-        <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/10 text-[11px]">
-          <div className="flex items-center gap-2 text-emerald-400">
+        <div className="flex items-center justify-between pb-4 mb-4 border-b border-ink/10 text-[11px]">
+          <div className="flex items-center gap-2 text-emerald-700 font-semibold">
             <Activity className="h-3.5 w-3.5 animate-pulse" />
             <span>SIGNAL_STRENGTH: 99.8%</span>
           </div>
-          <span className="text-paper/40">PORT: 443/80/22 OPEN</span>
+          <span className="text-ash font-medium">PORT: 443/80/22 OPEN</span>
         </div>
 
         {/* Console stream log lines */}
-        <div className="space-y-2 text-[12px] md:text-[13px] text-paper/70">
+        <div className="space-y-2 text-[12px] md:text-[13px] text-ink/80 font-mono">
           <div className="flex items-center gap-2">
             <Radio className="h-3.5 w-3.5 text-ember" />
-            <span className="text-paper/40">[00:01:42]</span>
+            <span className="text-ash">[00:01:42]</span>
             <span>Handshake verified with foundry core node</span>
           </div>
           <div className="flex items-center gap-2">
             <Binary className="h-3.5 w-3.5 text-ember" />
-            <span className="text-paper/40">[00:01:43]</span>
-            <span className="text-paper">Target: ctf.r00tgeist.in — Recon payload loaded</span>
+            <span className="text-ash">[00:01:43]</span>
+            <span className="text-ink font-semibold">Target: ctf.r00tgeist.in — Recon payload loaded</span>
           </div>
           <div className="flex items-center gap-2">
-            <Wifi className="h-3.5 w-3.5 text-emerald-400" />
-            <span className="text-paper/40">[00:01:44]</span>
-            <span className="text-emerald-400">Vulnerability hunt pipeline: ACTIVE</span>
+            <Wifi className="h-3.5 w-3.5 text-emerald-700" />
+            <span className="text-ash">[00:01:44]</span>
+            <span className="text-emerald-700 font-semibold">Vulnerability hunt pipeline: ACTIVE</span>
           </div>
         </div>
 
         {/* Telemetry bottom bar */}
-        <div className="mt-5 pt-4 border-t border-white/10 flex justify-between items-center text-[10px] text-paper/40">
+        <div className="mt-5 pt-4 border-t border-ink/10 flex justify-between items-center text-[10px] text-ash uppercase font-semibold">
           <span>LATENCY: 12ms</span>
           <span>PROTOCOL: BREAK_TO_UNDERSTAND</span>
         </div>
       </div>
 
       {/* Terminal prompt */}
-      <div className="mt-6 font-mono text-[13px] md:text-[14px] text-paper/90 leading-relaxed bg-black/60 p-4 md:p-5 rounded-lg border-l-2 border-ember border border-paper/5">
+      <div className="mt-6 font-mono text-[13px] md:text-[14px] text-ink leading-relaxed bg-parchment/90 p-4 md:p-5 rounded-lg border-l-2 border-ember border border-ink/10 shadow-sm">
         <span className="text-ember mr-2 font-bold">admin@foundry:~$</span>
-        <span>{text}</span>
+        <span className="font-semibold">{text}</span>
         <span className="animate-caret text-ember ml-1">▌</span>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -195,8 +199,8 @@ export default function Projects() {
       </div>
 
       {/* ── r00tgeist ── */}
-      <section className="bg-ink/85 backdrop-blur-2xl text-paper px-6 py-24 md:px-12 md:py-44 relative border-y border-white/10">
-        <SectionLabel className="invert mb-16">01 — The cybersecurity crew</SectionLabel>
+      <section className="bg-parchment/60 backdrop-blur-2xl text-ink px-6 py-24 md:px-12 md:py-44 relative border-y border-ink/10">
+        <SectionLabel className="mb-16">01 — The cybersecurity crew</SectionLabel>
         
         <div className="grid gap-20 lg:grid-cols-12 items-center">
           <div className="lg:col-span-7">
@@ -209,40 +213,45 @@ export default function Projects() {
           
           <div className="lg:col-span-5 relative z-10">
             <FadeIn delay={0.2}>
-              <div className="flex items-center gap-2 text-ember font-mono text-[11px] uppercase tracking-widest mb-4">
+              <div className="flex items-center gap-2 text-ember font-mono text-[11px] uppercase tracking-widest mb-4 font-semibold">
                 <span className="h-2 w-2 rounded-full bg-ember animate-ping" />
                 Special Operations Division
               </div>
-              <h2 className="serif text-[clamp(2.8rem,6vw,5.5rem)] leading-[0.95] tracking-tight mb-8">
-                Learn by <span className="text-ember underline decoration-white/20 underline-offset-8">breaking.</span>
+              <h2 className="serif text-[clamp(2.8rem,6vw,5.5rem)] leading-[0.95] tracking-tight mb-8 text-ink">
+                Learn by <span className="text-ember underline decoration-ink/20 underline-offset-8">breaking.</span>
               </h2>
             </FadeIn>
             <FadeIn delay={0.3}>
-              <p className="text-[19px] leading-relaxed text-paper/70 mb-8">
+              <p className="text-[19px] leading-relaxed text-ink/80 mb-8">
                 r00tgeist is our specialized unit dedicated to the offensive and defensive arts. We don&apos;t just read about vulnerabilities; we hunt them.
               </p>
               
-              <div className="grid grid-cols-2 gap-4 mb-10 p-4 rounded-lg bg-white/5 border border-white/10 font-mono text-[12px]">
+              <div className="grid grid-cols-2 gap-4 mb-10 p-4 rounded-lg bg-paper/80 border border-ink/10 font-mono text-[12px] shadow-sm">
                 <div>
-                  <span className="text-ash block text-[10px] uppercase">Focus</span>
-                  <span className="text-paper">CTF &amp; Systems</span>
+                  <span className="text-ash block text-[10px] uppercase font-semibold">Focus</span>
+                  <span className="text-ink font-semibold">CTF &amp; Systems</span>
                 </div>
                 <div>
-                  <span className="text-ash block text-[10px] uppercase">Access</span>
-                  <span className="text-ember">Open for builders</span>
+                  <span className="text-ash block text-[10px] uppercase font-semibold">Access</span>
+                  <span className="text-ember font-bold">Open for builders</span>
                 </div>
               </div>
             </FadeIn>
             <FadeIn delay={0.4}>
-              <PerspectiveCard className="inline-block">
+              <motion.div
+                whileHover={{ scale: 1.04, scaleY: 0.97 }}
+                whileTap={{ scale: 0.96 }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                className="inline-block"
+              >
                 <ULink
                   href="https://r00tgeist.techfoundry.in"
                   external
-                  className="bg-ember text-white px-12 py-6 text-[16px] font-bold hover:bg-white hover:text-ember transition-all inline-block rounded shadow-2xl"
+                  className="bg-ember text-white px-12 py-6 text-[16px] font-bold hover:bg-ink hover:text-paper transition-all inline-block rounded shadow-xl"
                 >
                   Visit the Signal ↗
                 </ULink>
-              </PerspectiveCard>
+              </motion.div>
             </FadeIn>
           </div>
         </div>
@@ -259,20 +268,23 @@ export default function Projects() {
           <div className="lg:col-span-5">
             <div className="flex flex-col gap-4">
               {AREAS.map((a, i) => (
-                <button
+                <motion.button
                   key={a.n}
                   onClick={() => setActiveTab(i)}
-                  className="group text-left p-6 transition-all relative overflow-hidden"
+                  whileHover={{ scale: 1.02, scaleY: 0.98 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 350, damping: 18 }}
+                  className="group text-left p-6 transition-all relative overflow-hidden rounded-md"
                 >
                   {activeTab === i && (
                     <motion.div 
                       layoutId="tab-bg" 
                       className="absolute inset-0 bg-ink rounded-md" 
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 25 }}
                     />
                   )}
                   <div className="relative z-10 flex items-center gap-6">
-                    <span className={`font-mono text-sm ${activeTab === i ? 'text-ember' : 'text-ash group-hover:text-ink'}`}>
+                    <span className={`font-mono text-sm ${activeTab === i ? 'text-ember font-bold' : 'text-ash group-hover:text-ink'}`}>
                       {a.n}
                     </span>
                     <a.Icon className={`h-5 w-5 ${activeTab === i ? 'text-ember' : 'text-ash group-hover:text-ink'}`} strokeWidth={1.75} />
@@ -280,7 +292,7 @@ export default function Projects() {
                       {a.title}
                     </span>
                   </div>
-                </button>
+                </motion.button>
               ))}
             </div>
           </div>
@@ -289,16 +301,17 @@ export default function Projects() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
-                initial={{ opacity: 0, x: 20, filter: "blur(10px)" }}
-                animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, x: -20, filter: "blur(10px)" }}
-                transition={{ duration: 0.5, ease: EASE_CUSTOM }}
-                className="bg-paper/70 backdrop-blur-xl p-12 md:p-20 rounded-lg shadow-xl relative border border-ink/10"
+                initial={{ opacity: 0, scale: 0.97, scaleY: 1.03, filter: "blur(8px)" }}
+                animate={{ opacity: 1, scale: 1, scaleY: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, scale: 0.97, scaleY: 1.03, filter: "blur(8px)" }}
+                transition={{ type: "spring", stiffness: 320, damping: 22 }}
+                whileHover={{ scale: 1.015, scaleY: 0.99 }}
+                className="bg-paper/85 backdrop-blur-xl p-12 md:p-20 rounded-xl shadow-xl relative border border-ink/10"
               >
                 {(() => {
                   const CurrentIcon = AREAS[activeTab].Icon;
                   return (
-                    <div className="mb-10 p-5 rounded-2xl bg-parchment/60 w-fit border border-ink/10">
+                    <div className="mb-10 p-5 rounded-2xl bg-parchment/80 w-fit border border-ink/10 shadow-sm">
                       <CurrentIcon className="h-14 w-14 text-ember" strokeWidth={1.5} />
                     </div>
                   );
@@ -306,13 +319,13 @@ export default function Projects() {
                 <h3 className="serif text-5xl text-ink mb-8 leading-tight">
                   {AREAS[activeTab].title}
                 </h3>
-                <p className="text-[20px] leading-relaxed text-ink/70 italic mb-12 border-l-4 border-ember pl-10">
+                <p className="text-[20px] leading-relaxed text-ink/75 italic mb-12 border-l-4 border-ember pl-10">
                   {AREAS[activeTab].desc}
                 </p>
                 <DrawingBorder />
                 
                 <div className="flex justify-end">
-                   <div className="font-mono text-[11px] text-ash tracking-widest uppercase">
+                   <div className="font-mono text-[11px] text-ash tracking-widest uppercase font-semibold">
                       Practice Unit — {AREAS[activeTab].n}
                    </div>
                 </div>

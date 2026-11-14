@@ -8,9 +8,19 @@ export const ROUTES: { path: Route; n: string; label: string }[] = [
   { path: "/contact", n: "3", label: "Contact" },
 ];
 
-function normalize(pathname: string): Route {
-  const clean = pathname.replace(/\/+$/, "").toLowerCase() || "/";
-  return clean === "/about" || clean === "/projects" || clean === "/contact" ? clean : "/";
+function normalize(pathname: string, hash: string = ""): Route {
+  let clean = (pathname || "/").replace(/\/+$/, "").toLowerCase() || "/";
+  clean = clean.replace(/\/index\.html$/, "");
+  if (!clean || clean === "/") {
+    if (hash) {
+      const hashClean = hash.replace(/^#\/?/, "").toLowerCase();
+      if (hashClean === "about" || hashClean === "projects" || hashClean === "contact") {
+        return `/${hashClean}` as Route;
+      }
+    }
+    return "/";
+  }
+  return clean === "/about" || clean === "/projects" || clean === "/contact" ? (clean as Route) : "/";
 }
 
 interface NavState {
@@ -25,12 +35,18 @@ export function useNav() {
 }
 
 export function useRouter() {
-  const [route, setRoute] = useState<Route>(() => normalize(window.location.pathname));
+  const [route, setRoute] = useState<Route>(() =>
+    typeof window !== "undefined" ? normalize(window.location.pathname, window.location.hash) : "/"
+  );
 
   useEffect(() => {
-    const onPop = () => setRoute(normalize(window.location.pathname));
+    const onPop = () => setRoute(normalize(window.location.pathname, window.location.hash));
     window.addEventListener("popstate", onPop);
-    return () => window.removeEventListener("popstate", onPop);
+    window.addEventListener("hashchange", onPop);
+    return () => {
+      window.removeEventListener("popstate", onPop);
+      window.removeEventListener("hashchange", onPop);
+    };
   }, []);
 
   const navigate = (r: Route) => {

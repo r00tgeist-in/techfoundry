@@ -7,8 +7,8 @@ import { Code2, ShieldAlert, Sparkles, Users, Compass, Layers, Terminal } from "
 
 const MEMBERS = [
   { n: "01", name: "Aaryaman Shrivastav", role: "CEO · Founder" },
-  { n: "02", name: "Virat Chaturvedi", role: "CEO · Founder" },
-  { n: "03", name: "Nilay", role: "CEO · Founder" },
+  { n: "02", name: "Nilay Mishra", role: "CEO · Founder" },
+  { n: "03", name: "Virat Chaturvedi", role: "CEO · Founder" },
   { n: "04", name: "Agastya", role: "COO" },
   { n: "05", name: "Aarav Shishodia", role: "CTO" },
   { n: "06", name: "Gabriel", role: "CMO" },
@@ -119,11 +119,11 @@ export default function About() {
       </section>
 
       {/* ── THE PEOPLE ── */}
-      <section className="px-6 py-24 md:px-12 md:py-44 bg-ink/85 backdrop-blur-2xl text-paper relative overflow-hidden border-y border-white/10">
+      <section className="px-6 py-24 md:px-12 md:py-44 bg-parchment/60 backdrop-blur-md text-ink relative overflow-hidden border-y border-ink/10">
         <div className="relative z-10">
-          <SectionLabel className="invert">The Team</SectionLabel>
-          <div className="flex flex-wrap justify-between items-end mt-12 mb-20 border-b border-paper/10 pb-12">
-            <h2 className="serif text-[clamp(2.5rem,7vw,7rem)] leading-none tracking-tight">
+          <SectionLabel>The Team</SectionLabel>
+          <div className="flex flex-wrap justify-between items-end mt-12 mb-20 border-b border-ink/10 pb-12">
+            <h2 className="serif text-[clamp(2.5rem,7vw,7rem)] leading-none tracking-tight text-ink">
               Meet the <span className="italic text-ember">team.</span>
             </h2>
           </div>
@@ -132,15 +132,15 @@ export default function About() {
             {MEMBERS.map((m, i) => (
               <FadeIn key={m.n} delay={i * 0.05} y={40}>
                 <PerspectiveCard className="group">
-                  <div className="flex items-center gap-8 py-10 border-b border-paper/10">
-                    <span className="font-mono text-[14px] text-ember/50 group-hover:text-ember transition-colors">
+                  <div className="flex items-center gap-8 py-10 border-b border-ink/10">
+                    <span className="font-mono text-[14px] text-ember font-bold group-hover:scale-110 transition-transform">
                       {m.n}
                     </span>
                     <div className="flex-1">
-                      <h3 className="serif text-4xl group-hover:italic group-hover:translate-x-4 transition-all duration-500">
+                      <h3 className="serif text-4xl text-ink group-hover:text-ember group-hover:italic group-hover:translate-x-4 transition-all duration-500">
                         {m.name}
                       </h3>
-                      <p className="text-[13px] uppercase tracking-widest text-ash mt-4 font-mono">
+                      <p className="text-[13px] uppercase tracking-widest text-ash mt-4 font-mono font-medium">
                         {m.role}
                       </p>
                     </div>
