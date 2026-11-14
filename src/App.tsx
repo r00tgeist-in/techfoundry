@@ -15,7 +15,13 @@ export default function App() {
   const nav = useRouter();
 
   useEffect(() => {
-    const lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 1.05 });
+    const isTouchDevice = typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
+    const lenis = new Lenis({ 
+      lerp: isTouchDevice ? 0.12 : 0.09, 
+      wheelMultiplier: 1.05,
+      touchMultiplier: 1.0,
+      syncTouch: false,
+    });
     scrollBus.lenis = lenis;
     let raf = 0;
     const loop = (t: number) => {

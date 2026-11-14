@@ -137,6 +137,7 @@ uniform vec2 uShift;
 uniform float uRoughness;
 uniform float uExposure;
 uniform float uLight;
+uniform float uLowPower;
 uniform sampler2D uSlope;
 uniform vec2 uSlopeSize;
 uniform float uRipple;
@@ -259,7 +260,9 @@ void main() {
   vec3 v = normalize(vec3(uv * 0.08, -1.0));
   float blur = uRoughness * 0.35;
   vec3 light;
-  if (bend < 0.01) {
+  if (uLowPower > 0.5) {
+    light = shade(slope, v, blur + bend * 0.35, f0);
+  } else if (bend < 0.01) {
     light = shade(slope, v, blur + bend * 0.5, f0);
   } else {
     light = vec3(0.0);
@@ -411,6 +414,12 @@ const LiquidChrome = ({
     const slope = fluid ? link(gl, SLOPE) : null;
 
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isTouch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    const isSmall = window.innerWidth < 768;
+    const isMobileUA = /Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
+    const lowCores = typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4;
+    const isLowPower = isTouch || isSmall || isMobileUA || lowCores || reduced;
+
     const vao = gl.createVertexArray();
     const grid = { width: 1, height: 1 };
     const targets: Target[] = [];
@@ -458,10 +467,12 @@ const LiquidChrome = ({
       const rect = container.getBoundingClientRect();
       const cssWidth = Math.max(1, rect.width);
       const cssHeight = Math.max(1, rect.height);
+      const maxAllowedRatio = isLowPower ? 1.0 : Math.min(s.maxRatio, 1.5);
+      const budget = isLowPower ? 7.5e5 : PIXEL_BUDGET;
       const ratio = Math.min(
         window.devicePixelRatio || 1,
-        s.maxRatio,
-        Math.sqrt(PIXEL_BUDGET / (cssWidth * cssHeight))
+        maxAllowedRatio,
+        Math.sqrt(budget / (cssWidth * cssHeight))
       );
       const width = Math.max(1, Math.round(cssWidth * ratio));
       const height = Math.max(1, Math.round(cssHeight * ratio));
@@ -471,8 +482,9 @@ const LiquidChrome = ({
       }
       unit = Math.min(width, height);
       if (!fluid || !sim || !slope) return;
-      const gridWidth = clamp(Math.round(cssWidth / SIM_CELL), 16, 512);
-      const gridHeight = clamp(Math.round(cssHeight / SIM_CELL), 16, 512);
+      const cell = isLowPower ? 6 : SIM_CELL;
+      const gridWidth = clamp(Math.round(cssWidth / cell), 16, isLowPower ? 256 : 512);
+      const gridHeight = clamp(Math.round(cssHeight / cell), 16, isLowPower ? 256 : 512);
       if (gridWidth === grid.width && gridHeight === grid.height && targets.length) return;
       targets.forEach(dropTarget);
       targets.length = 0;
@@ -523,7 +535,8 @@ const LiquidChrome = ({
       gl.uniform1f(u.uAmplitude, s.amplitude);
       gl.uniform2f(u.uFrequency, s.frequency[0], s.frequency[1]);
       gl.uniform1f(u.uDepth, s.depth);
-      gl.uniform1f(u.uDetail, s.detail);
+      gl.uniform1f(u.uDetail, isLowPower ? Math.min(s.detail, 3.5) : s.detail);
+      gl.uniform1f(u.uLowPower, isLowPower ? 1 : 0);
       gl.uniform1f(u.uSharpness, 5 / (3 * s.thickness));
       gl.uniform1f(u.uPresence, 1 - Math.pow(1 - presence, 3));
       gl.uniform3fv(u.uTint, s.tint);
@@ -608,6 +621,7 @@ const LiquidChrome = ({
     };
 
     const onPointerMove = (event: PointerEvent) => {
+      if (isTouch) return;
       const s = settingsRef.current;
       const spot = toGrid(event.clientX, event.clientY);
       pointer.nx = clamp(spot.nx, -1, 1);

@@ -61,7 +61,7 @@ export default function About() {
             "BUILDERS & EXPERIMENTERS",
             "r00tgeist CREW",
             "CREATIVE COMPUTING",
-            "NEW DELHI · 2026"
+            "INDIA · 2026"
           ]} 
           duration={32}
           className="font-mono text-[11px] md:text-[12px] uppercase tracking-[0.25em] text-ink/80 font-medium"
@@ -83,11 +83,11 @@ export default function About() {
               <div className="p-5 rounded-lg border border-ink/10 bg-paper/60 backdrop-blur-md font-mono text-[12px] space-y-2 text-ink/70">
                 <div className="flex justify-between border-b border-ink/10 pb-2">
                   <span className="text-ash">BASE</span>
-                  <span>NEW DELHI, INDIA</span>
+                  <span>INDIA</span>
                 </div>
                 <div className="flex justify-between border-b border-ink/10 pb-2">
                   <span className="text-ash">COORDINATES</span>
-                  <span>28.6139° N, 77.2090° E</span>
+                  <span>20.5937° N, 78.9629° E</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-ash">CYBER DIVISION</span>
@@ -105,7 +105,7 @@ export default function About() {
             <div className="mt-16 space-y-12">
               <FadeIn delay={0.1}>
                 <p className="text-[20px] leading-relaxed text-ink/80 max-w-2xl font-medium">
-                  TechFoundry is a youth-led technology organisation based in New Delhi. We explore technology, cybersecurity, events, startups and creative projects through collaboration and practical experience.
+                  TechFoundry is a youth-led technology organisation based in India. We explore technology, cybersecurity, events, startups and creative projects through collaboration and practical experience.
                 </p>
               </FadeIn>
               <FadeIn delay={0.2}>
@@ -172,15 +172,23 @@ export default function About() {
             <p className="text-[18px] text-ink/60 mb-12">
               Our community is open to the curious, the brave, and the builders.
             </p>
-            <PerspectiveCard className="inline-block">
+            <div className="flex flex-wrap items-center justify-center gap-6">
+              <PerspectiveCard className="inline-block">
+                <ULink
+                  href="mailto:team@techfoundry.in"
+                  className="bg-ink text-paper px-14 py-7 text-[17px] font-semibold hover:bg-ember hover:scale-105 active:scale-95 transition-all shadow-xl rounded"
+                >
+                  Connect with the Collective →
+                </ULink>
+              </PerspectiveCard>
               <ULink
-                href="https://discord.gg/ptW4vH5WW"
+                href="https://www.instagram.com/wwwtechfoundryin"
                 external
-                className="bg-ember text-white px-16 py-8 text-[18px] font-bold hover:scale-110 active:scale-95 transition-all shadow-xl"
+                className="px-10 py-7 text-[16px] font-medium border border-ink/20 text-ink hover:border-ink hover:text-ember transition-all rounded bg-paper/60"
               >
-                Join the Discord ↗
+                Instagram ↗
               </ULink>
-            </PerspectiveCard>
+            </div>
           </FadeIn>
         </div>
       </section>

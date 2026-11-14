@@ -54,7 +54,7 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
           >
             <div className="flex items-baseline justify-between">
               <span className="serif text-xl text-ink md:text-2xl">TechFoundry</span>
-              <span className="paren text-sm text-ash md:text-base">new delhi</span>
+              <span className="paren text-sm text-ash md:text-base">india</span>
             </div>
 
             <div className="flex items-end justify-between">

@@ -78,16 +78,13 @@ export default function Contact() {
               </FadeIn>
               <FadeIn delay={0.8}>
                 <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-ash mb-4">Base</p>
-                <p className="serif text-2xl text-ink">New Delhi, India</p>
+                <p className="serif text-2xl text-ink">India</p>
               </FadeIn>
             </div>
 
             <FadeIn delay={0.9}>
               <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-ash mb-6">Elsewhere</p>
               <div className="flex flex-wrap gap-8">
-                <ULink href="https://discord.gg/ptW4vH5WW" external className="serif text-2xl text-ink hover:text-ember">
-                  Discord ↗
-                </ULink>
                 <ULink href="https://www.instagram.com/wwwtechfoundryin" external className="serif text-2xl text-ink hover:text-ember">
                   Instagram ↗
                 </ULink>

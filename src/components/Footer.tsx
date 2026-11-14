@@ -22,14 +22,13 @@ export default function Footer() {
             <div className="mt-2 flex flex-col gap-1.5">
               <ULink href="https://theanesthesia.xyz" external className="text-ember font-medium">Anesthesia Event ↗</ULink>
               <ULink href="https://discord.gg/qPp9gwkd3D" external className="text-ink">Anesthesia Discord ↗</ULink>
-              <ULink href="https://discord.gg/ptW4vH5WW" external className="text-ink">TechFoundry Discord ↗</ULink>
               <ULink href="https://www.instagram.com/wwwtechfoundryin" external className="text-ink">Instagram ↗</ULink>
               <ULink href="https://r00tgeist.techfoundry.in" external className="text-ash font-medium hover:text-ember">r00tgeist ↗</ULink>
             </div>
           </div>
           <div>
             <p className="text-[12px] uppercase tracking-widest text-ash">Base</p>
-            <p className="mt-2 text-ink">New Delhi, India</p>
+            <p className="mt-2 text-ink">India</p>
           </div>
         </div>
       </FadeIn>
@@ -49,7 +48,7 @@ export default function Footer() {
 
       <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-ink/10 pt-6 text-[13px] text-ash">
         <span>TechFoundry</span>
-        <span>New Delhi / Open to the world</span>
+        <span>India / Open to the world</span>
         <span className="text-ember">Ideas. Made. Real.</span>
       </div>
     </footer>

@@ -85,19 +85,14 @@ export default function Home() {
           <FadeIn delay={0.2} blur={5} y={-10}>
             <div className="flex items-center justify-between text-[13px] text-ash">
               <span className="flex items-center gap-2.5">
-                <img 
-                  src="/images/techfoundry-logo.png" 
-                  alt="TechFoundry" 
-                  className="h-5 w-auto object-contain brightness-0 opacity-80" 
-                />
                 <motion.span 
                   animate={{ rotate: 360 }} 
-                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                  className="inline-block"
+                  transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                  className="inline-block text-ember"
                 >✦</motion.span>
-                Independent minds / Shared ambition
+                <span className="font-medium tracking-tight">Independent minds / Shared ambition</span>
               </span>
-              <span className="font-mono tracking-widest">NEW DELHI · 28.6139° N</span>
+              <span className="font-mono tracking-widest text-[11px] uppercase">INDIA · 20.5937° N</span>
             </div>
           </FadeIn>
 
@@ -112,17 +107,11 @@ export default function Home() {
               className="serif text-[clamp(4.5rem,13vw,14rem)] leading-[0.8] tracking-tighter text-ink md:ml-[10vw]" 
               delay={0.6} 
             />
-            <div className="relative inline-block">
+            <div className="relative">
               <SplitTextReveal 
                 text="Real." 
                 className="serif text-[clamp(4.5rem,13vw,14rem)] leading-[0.8] tracking-tighter text-ember md:ml-[20vw]" 
                 delay={0.8} 
-              />
-              <motion.div 
-                initial={{ width: 0 }} 
-                animate={{ width: "100%" }} 
-                transition={{ delay: 1.5, duration: 1, ease: EASE_SOFT }}
-                className="absolute -bottom-2 left-[20vw] h-1 bg-ember/30"
               />
             </div>
           </div>
@@ -162,7 +151,7 @@ export default function Home() {
             "r00tgeist CREW",
             "SYSTEMS & CODE",
             "discord.gg/qPp9gwkd3D",
-            "NEW DELHI · 28.6139° N"
+            "INDIA · 20.5937° N"
           ]} 
           duration={30}
           className="font-mono text-[11px] md:text-[12px] uppercase tracking-[0.25em] text-ink/80 font-medium"
@@ -346,7 +335,7 @@ export default function Home() {
               <span className="text-ink font-semibold">SIGNAL ACTIVE // ANESTHESIA 2026</span>
             </div>
             <div className="flex items-center gap-6">
-              <span className="text-ash font-medium">NEW DELHI · HYBRID ARENA</span>
+              <span className="text-ash font-medium">INDIA · HYBRID ARENA</span>
               <span className="text-ember font-bold">● ARENAS OPEN</span>
             </div>
           </div>
